@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cyber-black: #030712;
+  --color-cyber-card: rgba(13, 17, 28, 0.75);
+  --color-cyber-blue: #00f0ff;
+  --color-cyber-indigo: #6366f1;
+  --color-cyber-orange: #ff8c00;
+  --color-cyber-red: #ff0055;
+  --color-cyber-yellow: #ffd700;
+  --color-cyber-emerald: #00ff9d;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+}
+
+body {
+  @apply bg-[#030712] text-white overflow-x-hidden antialiased selection:bg-cyan-500/30 selection:text-cyan-200;
+  font-family: var(--font-sans);
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(0, 240, 255, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 100% 100%, rgba(255, 140, 0, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 0% 100%, rgba(255, 0, 85, 0.05) 0%, transparent 50%);
+  background-attachment: fixed;
+}
+
+/* Cyber Grid Overlay */
+.cyber-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: rgba(13, 18, 30, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass-panel-glow {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.15), inset 0 0 15px rgba(0, 240, 255, 0.05);
+}
+
+.glass-card-orange {
+  background: rgba(26, 17, 10, 0.75);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 140, 0, 0.25);
+  box-shadow: 0 0 20px rgba(255, 140, 0, 0.15), inset 0 0 10px rgba(255, 140, 0, 0.05);
+}
+
+.glass-card-red {
+  background: rgba(30, 10, 18, 0.75);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 0, 85, 0.25);
+  box-shadow: 0 0 20px rgba(255, 0, 85, 0.15), inset 0 0 10px rgba(255, 0, 85, 0.05);
+}
+
+.glass-card-yellow {
+  background: rgba(28, 25, 10, 0.75);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 215, 0, 0.25);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.15), inset 0 0 10px rgba(255, 215, 0, 0.05);
+}
+
+.glass-card-blue {
+  background: rgba(8, 24, 40, 0.75);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.15), inset 0 0 10px rgba(0, 240, 255, 0.05);
+}
+
+/* Flash Glow Effects */
+.flash-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.flash-effect::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent,
+    rgba(255, 255, 255, 0.08),
+    rgba(0, 240, 255, 0.15),
+    rgba(255, 140, 0, 0.1),
+    transparent
+  );
+  transform: rotate(30deg) translateY(-100%);
+  transition: transform 0.75s ease;
+  pointer-events: none;
+}
+
+.flash-effect:hover::after {
+  transform: rotate(30deg) translateY(100%);
+}
+
+/* Neon Text and Border Glows */
+.neon-glow-blue {
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.7), 0 0 20px rgba(0, 240, 255, 0.4);
+}
+
+.neon-glow-orange {
+  text-shadow: 0 0 8px rgba(255, 140, 0, 0.7), 0 0 20px rgba(255, 140, 0, 0.4);
+}
+
+.neon-glow-red {
+  text-shadow: 0 0 8px rgba(255, 0, 85, 0.7), 0 0 20px rgba(255, 0, 85, 0.4);
+}
+
+.neon-glow-yellow {
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.7), 0 0 20px rgba(255, 215, 0, 0.4);
+}
+
+/* Custom Scrollbars */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 240, 255, 0.4);
+}
+
+/* Pulsing radar dot animation */
+@keyframes radar-pulse {
+  0% { transform: scale(0.95); opacity: 0.8; box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.7); }
+  70% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 0 10px rgba(0, 240, 255, 0); }
+  100% { transform: scale(0.95); opacity: 0.8; box-shadow: 0 0 0 0 rgba(0, 240, 255, 0); }
+}
+
+.radar-dot {
+  animation: radar-pulse 2s infinite ease-in-out;
+}

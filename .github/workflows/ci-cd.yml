@@ -1,0 +1,50 @@
+name: Stackposts CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Lint Code
+        run: npm run lint
+
+      - name: Build Application
+        run: npm run build
+
+      # Add testing steps here, e.g.:
+      # - name: Run Tests
+      #   run: npm test
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build_and_test
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Mock deployment step
+      - name: Deploy to Production Cloud Run
+        run: |
+          echo "Deploying to production environment..."
+          # Deploy scripts or GCP Cloud Run deployment commands would go here.
+          echo "Deployment successful."

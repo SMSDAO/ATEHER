@@ -1,0 +1,6 @@
+{
+  "name": "AETHER Enterprise",
+  "description": "An all-in-one enterprise AI terminal with real-time websocket collaboration and glassmorphism UI.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
